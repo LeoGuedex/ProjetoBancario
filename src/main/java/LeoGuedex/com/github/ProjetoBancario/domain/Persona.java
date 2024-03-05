@@ -1,4 +1,4 @@
-package LeoGuedex.com.github.ProjetoBancario;
+package LeoGuedex.com.github.ProjetoBancario.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
