@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Funcionario extends Persona {
+public class Employee extends Persona {
 
 }
