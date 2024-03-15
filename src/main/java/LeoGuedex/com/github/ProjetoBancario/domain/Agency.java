@@ -15,22 +15,22 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Agencia {
+public class Agency {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private List<Persona> clientes;
+  private List<Persona> customers;
 
-  private String endereco;
+  private String address;
 
-  private String numero;
+  private String number;
 
-  private List<Funcionario> funcionarios;
+  private List<Employee> employees;
 
-  //private List<ContaCorrente> contasCorrentes;
+  private List<CurrentAccount> currentAccounts;
 
-  //private List<ContaPoupanca> contaPoupancas;
+  private List<SavingAccount> savingAccounts;
 
 }
