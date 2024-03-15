@@ -1,46 +1,38 @@
 package LeoGuedex.com.github.ProjetoBancario.domain;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.Email;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.br.CPF;
+import org.hibernate.validator.constraints.CreditCardNumber;
 
 @Data
-@Builder
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Persona {
+public class Card {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "name", nullable = false)
-  private String name;
+  @CreditCardNumber
+  private String number;
 
-  @Email
-  private String email;
-
-  private String password;
-
-  @CPF
-  private String cpf;
-
-  private LocalDate birthDay;
-
-  private Character gender;
-
-  private LocalDate whenCreated;
-
-  private LocalDate lastLogin;
+  private CardIdentification identification;
+  private CurrentAccount account;
+  private BigDecimal limit;
+  private LocalDate validity;
+  private Integer cvv;
+  private BigDecimal debit;
+  private Boolean credit;
+  private Boolean onlineShopping;
 
 }
