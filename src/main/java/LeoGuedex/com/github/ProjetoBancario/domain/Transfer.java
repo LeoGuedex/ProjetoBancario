@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pix {
+public class Transfer {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class Pix {
 
   private BigDecimal valor;
   private LocalDateTime whenCreated;
+  private Account originAccount;
   private Account destinyAccount;
-  private String chaveDestino;
 
 }
