@@ -6,7 +6,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Email.List;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,18 +31,17 @@ public class Persona {
 
   @Email
   private String email;
-
   private String password;
 
   @CPF
   private String cpf;
-
-  private LocalDate birthDay;
-
+  private TypeKey typeKey;
   private Character gender;
-
-  private LocalDate whenCreated;
-
   private LocalDate lastLogin;
+  private LocalDate whenCreated;
+  private LocalDateTime birthDay;
+  private SavingAccount savingAccount;
+  private CurrentAccount currentAccount;
+  private List<String> pixKeys;
 
 }
