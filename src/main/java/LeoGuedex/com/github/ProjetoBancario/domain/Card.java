@@ -1,5 +1,6 @@
 package LeoGuedex.com.github.ProjetoBancario.domain;
 
+import LeoGuedex.com.github.ProjetoBancario.domain.enums.CardIdentification;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
