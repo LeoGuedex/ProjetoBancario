@@ -22,7 +22,7 @@ public class Extract {
   private Long id;
 
   private String message;
-  private LocalDateTime whenCreated;
   private Account account;
+  private LocalDateTime whenCreated;
 
 }

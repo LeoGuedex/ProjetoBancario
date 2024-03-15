@@ -21,16 +21,11 @@ public class Agency {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private List<Persona> customers;
-
-  private String address;
-
   private String number;
-
+  private String address;
+  private List<Persona> customers;
   private List<Employee> employees;
-
   private List<CurrentAccount> currentAccounts;
-
   private List<SavingAccount> savingAccounts;
 
 }

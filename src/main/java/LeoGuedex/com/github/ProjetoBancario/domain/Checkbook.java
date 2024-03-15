@@ -22,8 +22,8 @@ public class Checkbook {
   private Long id;
 
   private String number;
-  private LocalDateTime whenCreated;
-  private CurrentAccount titular;
   private Integer numberOfPages;
+  private CurrentAccount titular;
+  private LocalDateTime whenCreated;
 
 }

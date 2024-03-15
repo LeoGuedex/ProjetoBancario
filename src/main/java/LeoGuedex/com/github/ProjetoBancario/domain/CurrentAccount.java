@@ -22,7 +22,7 @@ public class CurrentAccount extends Account {
   private Long id;
 
   private List<Card> cards;
-  private List<Checkbook> checkbooks;
   private List<Loan> loans;
+  private List<Checkbook> checkbooks;
 
 }

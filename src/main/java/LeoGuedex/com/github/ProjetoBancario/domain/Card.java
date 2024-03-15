@@ -26,13 +26,13 @@ public class Card {
   @CreditCardNumber
   private String number;
 
-  private CardIdentification identification;
-  private CurrentAccount account;
-  private BigDecimal limit;
-  private LocalDate validity;
   private Integer cvv;
-  private BigDecimal debit;
   private Boolean credit;
+  private BigDecimal limit;
+  private BigDecimal debit;
+  private LocalDate validity;
+  private CurrentAccount account;
   private Boolean onlineShopping;
+  private CardIdentification identification;
 
 }

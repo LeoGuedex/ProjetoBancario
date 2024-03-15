@@ -11,12 +11,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public abstract class Account {
 
-  private Persona customer;
-
   private String number;
-
+  private Persona customer;
   private BigDecimal balance;
-
   private List<Extract> extractList;
 
 }
