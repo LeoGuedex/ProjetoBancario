@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SavingAccount {
+public class SavingAccount extends Account {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
