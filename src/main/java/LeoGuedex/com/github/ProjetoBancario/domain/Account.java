@@ -1,19 +1,30 @@
 package LeoGuedex.com.github.ProjetoBancario.domain;
 
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public abstract class Account {
 
+  @ManyToOne
+  @JoinColumn(name = "agency_id")
+  private Agency agency;
+
+  @NotNull
   private String number;
-  private Persona customer;
-  private BigDecimal balance;
-  private List<Extract> extractList;
+
+  @ManyToOne
+  @JoinColumn(name = "persona_id")
+  private Persona customers;
+
+  private BigDecimal balance = new BigDecimal(BigInteger.ZERO);
+
+  private List<Extract> extractList = new ArrayList<>();
 
 }
