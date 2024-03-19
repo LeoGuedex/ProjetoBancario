@@ -1,5 +1,6 @@
 package LeoGuedex.com.github.ProjetoBancario.domain;
 
+import LeoGuedex.com.github.ProjetoBancario.repository.AgencyRepository;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,6 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Data
 @Entity
