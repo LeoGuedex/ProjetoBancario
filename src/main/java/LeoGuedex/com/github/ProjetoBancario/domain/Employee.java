@@ -1,16 +1,30 @@
 package LeoGuedex.com.github.ProjetoBancario.domain;
 
+import LeoGuedex.com.github.ProjetoBancario.domain.enums.FunctionEmployee;
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee extends Persona {
+
+  @NotNull
+  private Integer function;
+
+  private BigDecimal salary;
+
+  public FunctionEmployee getFunction() {
+    return FunctionEmployee.toEnum(this.function);
+  }
+
+  public void setFunction(FunctionEmployee function) {
+    this.function = function.getCod();
+  }
 
 }

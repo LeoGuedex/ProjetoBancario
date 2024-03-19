@@ -2,6 +2,7 @@ package LeoGuedex.com.github.ProjetoBancario.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,31 +10,36 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 @Data
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
-public class Deposit {
+@AllArgsConstructor
+@NoArgsConstructor
+public class BankingCheckbook {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @ManyToOne
-  @JsonIgnore
-  @JoinColumn(name = "current_account_id")
-  private CurrentAccount account;
+  @Length(max = 6, min = 6)
+  @Column(unique = true, nullable = false)
+  private String number;
 
   @JsonIgnore
-  private BigDecimal totalDeposited = new BigDecimal(BigInteger.ZERO);
+  private BigDecimal value = new BigDecimal(0);
+
+  private Integer numberOfPages;
+
+  @ManyToOne
+  @JoinColumn(name = "current_account_id")
+  private CurrentAccount currentAccount;
 
   @JsonIgnore
   @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
