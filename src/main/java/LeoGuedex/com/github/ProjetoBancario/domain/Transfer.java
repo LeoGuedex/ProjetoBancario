@@ -2,6 +2,7 @@ package LeoGuedex.com.github.ProjetoBancario.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,15 +27,12 @@ public class Transfer {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private BigDecimal value;
+  @Column(name = "transfer_value")
+  private BigDecimal value = new BigDecimal(0);
 
   @ManyToOne
-  @JoinColumn(name = "current_account_id")
+  @JoinColumn(name = "currentAccount_id")
   private CurrentAccount destinyAccount;
-
-  @ManyToOne
-  @JoinColumn(name = "saving_account_id")
-  private SavingAccount savingAccount;
 
   @JsonIgnore
   @JsonFormat(pattern = "dd/MM/yyyy HH:mm")

@@ -31,8 +31,12 @@ public class Extract {
 
   @ManyToOne
   @JsonIgnore
-  @JoinColumn(name = "current_account_id")
+  @JoinColumn(name = "currentAccount_id")
   private CurrentAccount currentAccount;
+
+  @ManyToOne
+  @JoinColumn(name = "savingAccount_id")
+  private SavingAccount savingAccount;
 
   @JsonIgnore
   @JsonFormat(pattern = "dd/MM/yyyy HH:mm")

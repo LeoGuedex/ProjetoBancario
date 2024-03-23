@@ -38,13 +38,13 @@ public class SavingAccount {
 
   @ManyToOne
   @JoinColumn(name = "persona_id")
-  private Persona customers;
+  private Persona persona;
 
   @JsonIgnore
   private BigDecimal balance = new BigDecimal(BigInteger.ZERO);
 
   @JsonIgnore
-  @OneToMany(mappedBy = "saving_account")
+  @OneToMany(mappedBy = "savingAccount")
   private List<Extract> extractList = new ArrayList<>();
 
 }

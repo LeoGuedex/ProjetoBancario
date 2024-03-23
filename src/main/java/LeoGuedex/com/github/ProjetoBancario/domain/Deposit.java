@@ -29,8 +29,8 @@ public class Deposit {
 
   @ManyToOne
   @JsonIgnore
-  @JoinColumn(name = "current_account_id")
-  private CurrentAccount account;
+  @JoinColumn(name = "currentAccount_id")
+  private CurrentAccount currentAccount;
 
   @JsonIgnore
   private BigDecimal totalDeposited = new BigDecimal(BigInteger.ZERO);

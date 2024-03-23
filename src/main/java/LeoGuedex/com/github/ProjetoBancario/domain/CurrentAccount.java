@@ -40,37 +40,37 @@ public class CurrentAccount {
 
   @ManyToOne
   @JoinColumn(name = "persona_id")
-  private Persona customers;
+  private Persona persona;
 
   @JsonIgnore
   private BigDecimal balance = new BigDecimal(BigInteger.ZERO);
 
   @JsonIgnore
-  @OneToMany(mappedBy = "current_account")
-  private List<Extract> extractList = new ArrayList<>();
+  @OneToMany(mappedBy = "currentAccount")
+  private List<Extract> extracts = new ArrayList<>();
 
   @JsonIgnore
-  @OneToMany(mappedBy = "current_account")
+  @OneToMany(mappedBy = "currentAccount")
   private Set<CreditCard> creditCards = new HashSet<>();
 
   @JsonIgnore
-  @OneToMany(mappedBy = "current_account")
+  @OneToMany(mappedBy = "currentAccount")
   private Set<Loan> loans = new HashSet<>();
 
   @JsonIgnore
-  @OneToMany(mappedBy = "current_account")
+  @OneToMany(mappedBy = "currentAccount")
   private List<BankingCheckbook> bankingCheckbooks;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "current_account")
+  @OneToMany(mappedBy = "destinyAccount")
   private List<Pix> receivedPix = new ArrayList<>();
 
   @JsonIgnore
-  @OneToMany(mappedBy = "current_account")
+  @OneToMany(mappedBy = "currentAccount")
   private List<Deposit> deposits = new ArrayList<>();
 
   @JsonIgnore
-  @OneToMany(mappedBy = "current_account")
+  @OneToMany(mappedBy = "currentAccount")
   private List<Withdraw> withdraws = new ArrayList<>();
 
 }

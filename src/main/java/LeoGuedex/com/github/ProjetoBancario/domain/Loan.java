@@ -6,7 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,8 +24,8 @@ public class Loan {
   private Long id;
 
   @ManyToOne
-  @JoinColumn(name = "current_account_id")
-  private CurrentAccount account;
+  @JoinColumn(name = "currentAccount_id")
+  private CurrentAccount currentAccount;
 
   private Integer installments;
 

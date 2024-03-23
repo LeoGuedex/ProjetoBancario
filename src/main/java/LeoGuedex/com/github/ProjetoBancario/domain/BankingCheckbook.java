@@ -20,8 +20,8 @@ import org.hibernate.validator.constraints.Length;
 @Data
 @Entity
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class BankingCheckbook {
 
   @Id
@@ -33,12 +33,13 @@ public class BankingCheckbook {
   private String number;
 
   @JsonIgnore
+  @Column(name = "checkbook_value")
   private BigDecimal value = new BigDecimal(0);
 
   private Integer numberOfPages;
 
   @ManyToOne
-  @JoinColumn(name = "current_account_id")
+  @JoinColumn(name = "currentAccount_id")
   private CurrentAccount currentAccount;
 
   @JsonIgnore
