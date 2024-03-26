@@ -25,6 +25,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 @Entity
@@ -41,42 +42,41 @@ public class Persona {
   private String name;
 
   @Email
+  @NotNull
   private String email;
 
-  @JsonIgnore
   private String password;
 
   @ManyToOne
   @JoinColumn(name = "agency_id")
   private Agency agency;
 
-  @JsonIgnore
   @OneToMany(mappedBy = "persona")
   private List<CurrentAccount> currentAccounts = new ArrayList<>();
 
-  @JsonIgnore
   @OneToMany(mappedBy = "persona")
   private List<SavingAccount> savingAccounts = new ArrayList<>();
 
   @CPF
   @NotNull
+  @Column(unique = true)
   private String cpf;
 
   private Integer typeKey;
 
+  @NotNull
   @Column(length = 1)
   private Character gender;
 
-  @JsonIgnore
   @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
   private LocalDateTime lastLogin;
 
-  @JsonIgnore
+  @Column(updatable = false)
   @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
   private LocalDateTime whenCreated;
 
-  @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-  private LocalDateTime birthDay;
+  @JsonFormat(pattern = "dd/MM/yyyy")
+  private LocalDate birthDay;
 
   @ElementCollection
   @CollectionTable(name = "PIX_KEYS")
