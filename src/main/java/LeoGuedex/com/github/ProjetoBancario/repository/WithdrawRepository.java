@@ -1,8 +1,10 @@
 package LeoGuedex.com.github.ProjetoBancario.repository;
 
-import LeoGuedex.com.github.ProjetoBancario.domain.Transfer;
+import LeoGuedex.com.github.ProjetoBancario.domain.Withdraw;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface WithdrawRepository extends JpaRepository<Transfer, Long> {
+@Repository
+public interface WithdrawRepository extends JpaRepository<Withdraw, Long> {
 
 }
