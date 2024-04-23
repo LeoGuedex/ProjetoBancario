@@ -5,6 +5,7 @@ import LeoGuedex.com.github.ProjetoBancario.domain.dto.PersonaRequestDto;
 import LeoGuedex.com.github.ProjetoBancario.domain.dto.PersonaResponseDto;
 import LeoGuedex.com.github.ProjetoBancario.exception.BankObjectNotFoundException;
 import LeoGuedex.com.github.ProjetoBancario.repository.PersonaRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +23,7 @@ public class PersonaService {
   private PersonaRepository personaRepository;
 
   @Autowired
-  private ModelMapper mapper;
+  private ObjectMapper mapper;
 
   public Persona createPersona(Persona persona) {
     persona.setId(null);
@@ -44,7 +45,7 @@ public class PersonaService {
     List<Persona> personaList = personaRepository.findAll();
 
     return personaList.stream()
-        .map(p -> mapper.map(p, PersonaResponseDto.class))
+        .map(p -> mapper.convertValue(p, PersonaResponseDto.class))
         .collect(Collectors.toSet());
   }
 
@@ -56,7 +57,7 @@ public class PersonaService {
 
     Persona personaSaved = personaRepository.save(personaFounded);
 
-    return mapper.map(personaSaved, PersonaResponseDto.class);
+    return mapper.convertValue(personaSaved, PersonaResponseDto.class);
   }
 
   @Transactional

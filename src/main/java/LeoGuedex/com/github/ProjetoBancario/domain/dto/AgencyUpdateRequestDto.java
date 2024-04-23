@@ -5,10 +5,7 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 @Data
-public class AgencyRequestDto {
-
-  @NotBlank
-  private String name;
+public class AgencyUpdateRequestDto {
 
   @NotBlank
   @Length(min = 4, max = 4, message = "Please insert 4 numbered digits for the Agency Number")

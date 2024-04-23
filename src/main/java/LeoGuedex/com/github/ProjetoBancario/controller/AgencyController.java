@@ -2,15 +2,21 @@ package LeoGuedex.com.github.ProjetoBancario.controller;
 
 import LeoGuedex.com.github.ProjetoBancario.domain.Agency;
 import LeoGuedex.com.github.ProjetoBancario.domain.dto.AgencyRequestDto;
+import LeoGuedex.com.github.ProjetoBancario.domain.dto.AgencyResponseDto;
+import LeoGuedex.com.github.ProjetoBancario.domain.dto.AgencyUpdateRequestDto;
 import LeoGuedex.com.github.ProjetoBancario.service.AgencyService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.net.URI;
-import java.sql.SQLNonTransientException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -18,10 +24,16 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RequestMapping(value = "/agencies")
 public class AgencyController {
 
-  @Autowired
-  private AgencyService agencyService;
+  private final AgencyService agencyService;
+  private final ObjectMapper objectMapper;
 
-  @RequestMapping(method = RequestMethod.POST)
+  @Autowired
+  public AgencyController(AgencyService agencyService, ObjectMapper objectMapper) {
+    this.agencyService = agencyService;
+    this.objectMapper = objectMapper;
+  }
+
+  @PostMapping(consumes = "application/json", produces = "application/json")
   public ResponseEntity<Void> createAgency(@RequestBody AgencyRequestDto agencyDto) {
     Agency savedAgency = null;
 
@@ -35,6 +47,23 @@ public class AgencyController {
         .buildAndExpand(savedAgency.getId()).toUri();
 
     return ResponseEntity.created(uri).build();
+  }
+
+  @GetMapping(value = "/{id}")
+  public ResponseEntity<AgencyResponseDto> readAgencyById(@PathVariable Long id) {
+    return ResponseEntity.ok(agencyService.readAgencyById(id));
+  }
+
+  @PutMapping(value = "/{id}")
+  public ResponseEntity<AgencyResponseDto> updateAgency(@PathVariable Long id,
+      @RequestBody AgencyUpdateRequestDto agencyUpdateRequestDto) {
+    return ResponseEntity.ok(agencyService.updateAgency(id, agencyUpdateRequestDto));
+  }
+
+  @DeleteMapping(value = "/{id}")
+  public ResponseEntity<Void> deleteAgency(@PathVariable Long id) {
+    agencyService.deleteAgency(id);
+    return ResponseEntity.noContent().build();
   }
 
 }
