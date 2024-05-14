@@ -1,6 +1,5 @@
 package LeoGuedex.com.github.ProjetoBancario.domain;
 
-import LeoGuedex.com.github.ProjetoBancario.repository.AgencyRepository;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,7 +16,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Data
 @Entity
@@ -56,4 +54,9 @@ public class Agency {
   @OneToMany(mappedBy = "agency")
   private Set<SavingAccount> savingAccounts = new HashSet<>();
 
+  public Agency(String name, String number, String address) {
+    this.name = name;
+    this.number = number;
+    this.address = address;
+  }
 }

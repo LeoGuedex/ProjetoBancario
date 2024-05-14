@@ -4,9 +4,10 @@ import LeoGuedex.com.github.ProjetoBancario.domain.Agency;
 import LeoGuedex.com.github.ProjetoBancario.domain.dto.AgencyRequestDto;
 import LeoGuedex.com.github.ProjetoBancario.domain.dto.AgencyResponseDto;
 import LeoGuedex.com.github.ProjetoBancario.domain.dto.AgencyUpdateRequestDto;
-import LeoGuedex.com.github.ProjetoBancario.service.AgencyService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import LeoGuedex.com.github.ProjetoBancario.service.imp.AgencyService;
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
@@ -25,23 +26,17 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class AgencyController {
 
   private final AgencyService agencyService;
-  private final ObjectMapper objectMapper;
 
   @Autowired
-  public AgencyController(AgencyService agencyService, ObjectMapper objectMapper) {
+  public AgencyController(AgencyService agencyService) {
     this.agencyService = agencyService;
-    this.objectMapper = objectMapper;
   }
 
   @PostMapping(consumes = "application/json", produces = "application/json")
   public ResponseEntity<Void> createAgency(@RequestBody AgencyRequestDto agencyDto) {
     Agency savedAgency = null;
 
-    try {
-      savedAgency = agencyService.createAgency(agencyDto);
-    } catch (DataIntegrityViolationException e) {
-      return ResponseEntity.badRequest().build();
-    }
+    savedAgency = agencyService.createAgency(agencyDto);
 
     URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
         .buildAndExpand(savedAgency.getId()).toUri();

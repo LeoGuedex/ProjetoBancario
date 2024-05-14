@@ -67,7 +67,6 @@ public class Persona {
 
   private Integer typeKey;
 
-  @NotNull
   @Column(length = 1)
   private Character gender;
 
@@ -93,4 +92,10 @@ public class Persona {
     this.typeKey = typeKey.getCod();
   }
 
+  public Persona(String name, String email, String password, String cpf) {
+    this.name = name;
+    this.email = email;
+    this.password = password;
+    this.cpf = cpf;
+  }
 }

@@ -1,4 +1,4 @@
-package LeoGuedex.com.github.ProjetoBancario.service;
+package LeoGuedex.com.github.ProjetoBancario.service.imp;
 
 import LeoGuedex.com.github.ProjetoBancario.domain.Agency;
 import LeoGuedex.com.github.ProjetoBancario.domain.dto.AgencyRequestDto;
@@ -6,6 +6,7 @@ import LeoGuedex.com.github.ProjetoBancario.domain.dto.AgencyResponseDto;
 import LeoGuedex.com.github.ProjetoBancario.domain.dto.AgencyUpdateRequestDto;
 import LeoGuedex.com.github.ProjetoBancario.exception.ObjectNotFoundException;
 import LeoGuedex.com.github.ProjetoBancario.repository.AgencyRepository;
+import LeoGuedex.com.github.ProjetoBancario.service.AgencyServiceInterface;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class AgencyService {
+public class AgencyService implements AgencyServiceInterface {
 
   private final AgencyRepository agencyRepository;
   private final ObjectMapper mapper;

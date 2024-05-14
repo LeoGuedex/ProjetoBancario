@@ -46,4 +46,5 @@ public class BankingCheckbook {
   @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
   private LocalDateTime whenCreated;
 
+
 }
