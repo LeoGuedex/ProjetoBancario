@@ -1,15 +1,14 @@
 package LeoGuedex.com.github.ProjetoBancario.controller;
 
 import LeoGuedex.com.github.ProjetoBancario.domain.Agency;
+import LeoGuedex.com.github.ProjetoBancario.domain.BankingCheckbook;
 import LeoGuedex.com.github.ProjetoBancario.domain.dto.AgencyRequestDto;
 import LeoGuedex.com.github.ProjetoBancario.domain.dto.AgencyResponseDto;
 import LeoGuedex.com.github.ProjetoBancario.domain.dto.AgencyUpdateRequestDto;
+import LeoGuedex.com.github.ProjetoBancario.domain.dto.BankingCheckbookDto;
 import LeoGuedex.com.github.ProjetoBancario.service.imp.AgencyService;
 import java.net.URI;
-import java.util.List;
-import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,6 +58,16 @@ public class AgencyController {
   public ResponseEntity<Void> deleteAgency(@PathVariable Long id) {
     agencyService.deleteAgency(id);
     return ResponseEntity.noContent().build();
+  }
+
+  @PostMapping(value = "/checkbook", consumes = "application/json", produces = "application/json")
+  public ResponseEntity<Void> createCheckbook(@RequestBody BankingCheckbookDto checkbookDto) {
+    BankingCheckbook createdCheckbook = agencyService.createCheckbook(checkbookDto);
+
+    URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+        .buildAndExpand(createdCheckbook.getId()).toUri();
+
+    return ResponseEntity.created(uri).build();
   }
 
 }
