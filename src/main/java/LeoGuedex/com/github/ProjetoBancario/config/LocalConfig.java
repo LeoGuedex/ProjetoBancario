@@ -13,11 +13,11 @@ public class LocalConfig {
   @Autowired
   private DatabaseLoad dbService;
 
-  @Bean
-  public boolean instantiateDatabase() {
-      dbService.instantiateDataBaseWithResources();
-
-      return true;
-  }
+//  @Bean
+//  public boolean instantiateDatabase() {
+//      dbService.instantiateDataBaseWithResources();
+//
+//      return true;
+//  }
 
 }
